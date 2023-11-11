@@ -34,10 +34,10 @@ This Transcription Web App is designed to provide an efficient and user-friendly
      ```bash
      cd backend
      ```
-   - Install the required dependecies (creating virtual env is recommended):
-    ```bash
-      pip install flask jinja2 markupsafe flask_restful
-    ``` 
+   - Install the required dependencies (creating virtual env is recommended):
+     ```bash
+     pip install flask jinja2 markupsafe flask_restful
+     ``` 
    - Start the Flask server:
      ```bash
      python app.py
