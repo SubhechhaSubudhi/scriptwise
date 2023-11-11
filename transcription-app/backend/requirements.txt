@@ -1,0 +1,4 @@
+flask
+flask-restful
+sqlalchemy
+# Add other necessary libraries like for audio processing, database connectors, etc.
