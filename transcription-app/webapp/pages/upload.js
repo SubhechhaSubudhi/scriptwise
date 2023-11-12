@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import '../app/globals.css';  // Import the global styles
 
-export default function upload() {
+export default function Upload() {
     const [selectedFile, setSelectedFile] = useState(null);
+    const [uploadStatus, setUploadStatus] = useState(null);
 
     const handleFileChange = (event) => {
         setSelectedFile(event.target.files[0]);
@@ -20,28 +22,37 @@ export default function upload() {
             const response = await fetch('http://localhost:5000/files', {
                 method: 'post',
                 body: formData,
-                mode: 'cors',
-                credentials: 'include',  // Include credentials such as cookies
-                headers: {'Access-Control-Allow-Origin': 'http://localhost:3000',  // Allow requests from any origin
+                credentials: 'include',
+                headers: {
+                    'Access-Control-Allow-Origin': 'http://localhost:3000',
                 },
             });
 
             if (response.ok) {
                 console.log('File uploaded successfully');
-                // Add any additional logic or redirection here
+                setUploadStatus('File uploaded successfully!');
             } else {
-                console.error('Failed to upload file', response.statusText);
+                console.error('Failed to upload file:', response.statusText);
+                setUploadStatus('Failed to upload file. Please try again.');
             }
         } catch (error) {
             console.error('Error uploading file:', error);
+            setUploadStatus('An error occurred while uploading the file.');
         }
     };
 
     return (
-        <div>
-            <h1>Upload File</h1>
-            <input type="file" onChange={handleFileChange} />
-            <button onClick={handleUpload}>Upload</button>
+        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white">
+            <h1 className="text-4xl font-bold mb-8">Upload File</h1>
+            <input type="file" onChange={handleFileChange} className="mb-6 p-4 border rounded" />
+            <button onClick={handleUpload} className="bg-blue-500 text-white px-6 py-3 rounded">
+                Upload
+            </button>
+            {uploadStatus && (
+                <p className={`mt-6 text-xl ${uploadStatus.includes('successfully') ? 'text-green-500' : 'text-red-500'}`}>
+                    {uploadStatus}
+                </p>
+            )}
         </div>
     );
 }
