@@ -46,7 +46,7 @@ This Transcription Web App is designed to provide an efficient and user-friendly
 3. **Set up the Frontend**
    - Open a new terminal and navigate to the frontend directory:
      ```bash
-     cd frontend
+     cd webapp
      ```
    - Install dependencies:
      ```bash
