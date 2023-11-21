@@ -1,4 +1,4 @@
-# Transcription Web App
+# Transcription App
 
 ## Overview
 This Transcription Web App is designed to provide an efficient and user-friendly interface for transcribing, managing, and editing audio and video files. It features a robust frontend built with Next.js and a powerful Python Flask backend.
